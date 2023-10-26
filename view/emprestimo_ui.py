@@ -18,30 +18,30 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QHBoxLayout,
     QLabel, QLineEdit, QPushButton, QSizePolicy,
     QVBoxLayout, QWidget)
-import view.resource_rc
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(410, 200)
-        Dialog.setMaximumSize(QSize(410, 200))
+        Dialog.resize(325, 213)
+        icon = QIcon()
+        icon.addFile(u":/icon/icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        Dialog.setWindowIcon(icon)
         self.horizontalLayout = QHBoxLayout(Dialog)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.widget = QWidget(Dialog)
         self.widget.setObjectName(u"widget")
-        self.widget.setMaximumSize(QSize(410, 400))
         self.verticalLayout = QVBoxLayout(self.widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.lbl_cpf_funcionario = QLabel(self.widget)
-        self.lbl_cpf_funcionario.setObjectName(u"lbl_cpf_funcionario")
+        self.lbl_cpf_funcionario_emprestimo = QLabel(self.widget)
+        self.lbl_cpf_funcionario_emprestimo.setObjectName(u"lbl_cpf_funcionario_emprestimo")
 
-        self.verticalLayout.addWidget(self.lbl_cpf_funcionario)
+        self.verticalLayout.addWidget(self.lbl_cpf_funcionario_emprestimo)
 
-        self.txt_emprestimo = QLineEdit(self.widget)
-        self.txt_emprestimo.setObjectName(u"txt_emprestimo")
+        self.txt_cpf_funcionario_emprestimo = QLineEdit(self.widget)
+        self.txt_cpf_funcionario_emprestimo.setObjectName(u"txt_cpf_funcionario_emprestimo")
 
-        self.verticalLayout.addWidget(self.txt_emprestimo)
+        self.verticalLayout.addWidget(self.txt_cpf_funcionario_emprestimo)
 
         self.lbl_nome_funcionario_emprestimo = QLabel(self.widget)
         self.lbl_nome_funcionario_emprestimo.setObjectName(u"lbl_nome_funcionario_emprestimo")
@@ -79,8 +79,8 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.lbl_cpf_funcionario.setText(QCoreApplication.translate("Dialog", u"CPF funcion\u00e1rio", None))
-        self.lbl_nome_funcionario_emprestimo.setText(QCoreApplication.translate("Dialog", u"Nome do funcion\u00e1rio", None))
+        self.lbl_cpf_funcionario_emprestimo.setText(QCoreApplication.translate("Dialog", u"CPF do funcionario", None))
+        self.lbl_nome_funcionario_emprestimo.setText(QCoreApplication.translate("Dialog", u"Nome do funcionario", None))
         self.lbl_tipo_uniforme.setText(QCoreApplication.translate("Dialog", u"Tipo de uniforme", None))
         self.btn_confirmar_emprestimo.setText(QCoreApplication.translate("Dialog", u"Confirma", None))
     # retranslateUi

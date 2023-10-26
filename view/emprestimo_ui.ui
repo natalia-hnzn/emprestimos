@@ -6,47 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>410</width>
-    <height>200</height>
+    <width>325</width>
+    <height>213</height>
    </rect>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>410</width>
-    <height>200</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="view/icon.qrc">
+   <iconset resource="icon.qrc">
     <normaloff>:/icon/icon.png</normaloff>:/icon/icon.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QWidget" name="widget" native="true">
-     <property name="maximumSize">
-      <size>
-       <width>410</width>
-       <height>400</height>
-      </size>
-     </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="lbl_cpf_funcionario">
+       <widget class="QLabel" name="lbl_cpf_funcionario_emprestimo">
         <property name="text">
-         <string>CPF funcionário</string>
+         <string>CPF do funcionario</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txt_emprestimo"/>
+       <widget class="QLineEdit" name="txt_cpf_funcionario_emprestimo"/>
       </item>
       <item>
        <widget class="QLabel" name="lbl_nome_funcionario_emprestimo">
         <property name="text">
-         <string>Nome do funcionário</string>
+         <string>Nome do funcionario</string>
         </property>
        </widget>
       </item>
@@ -76,7 +64,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="view/icon.qrc"/>
+  <include location="icon.qrc"/>
  </resources>
  <connections/>
 </ui>

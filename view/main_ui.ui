@@ -51,7 +51,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_inicio">
        <attribute name="title">
@@ -100,6 +100,11 @@
           <column>
            <property name="text">
             <string>Funcionário</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>CPF Funcionario</string>
            </property>
           </column>
           <column>
@@ -171,6 +176,30 @@
           </column>
          </widget>
         </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_exportar">
+            <property name="text">
+             <string>Exportar</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_gestao">
@@ -234,7 +263,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QTableWidget" name="tb_funcionarios">
+            <widget class="QTableWidget" name="tb_funcionario">
              <column>
               <property name="text">
                <string>Nome</string>
@@ -289,7 +318,7 @@
             </layout>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="btn_adicionar_uniforme">
              <property name="text">
               <string>Adicionar</string>
              </property>
