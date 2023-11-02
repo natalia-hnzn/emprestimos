@@ -29,7 +29,18 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txt_cpf_funcionario_emprestimo"/>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="txt_cpf_funcionario_emprestimo"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_consulta_funcionario">
+          <property name="text">
+           <string>Consultar</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QLabel" name="lbl_nome_funcionario_emprestimo">
@@ -49,7 +60,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="cb_tipo_uniforme"/>
+       <widget class="QComboBox" name="cb_uniforme"/>
       </item>
       <item>
        <widget class="QPushButton" name="btn_confirmar_emprestimo">

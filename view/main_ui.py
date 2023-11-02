@@ -112,6 +112,7 @@ class Ui_MainWindow(object):
 
         self.txt_data_inicial = QLineEdit(self.tab_relatorio)
         self.txt_data_inicial.setObjectName(u"txt_data_inicial")
+        self.txt_data_inicial.setInputMask("99/99/9999;_")
 
         self.horizontalLayout.addWidget(self.txt_data_inicial)
 
@@ -122,6 +123,7 @@ class Ui_MainWindow(object):
 
         self.txt_data_final = QLineEdit(self.tab_relatorio)
         self.txt_data_final.setObjectName(u"txt_data_final")
+        self.txt_data_final.setInputMask("99/99/999;_")
 
         self.horizontalLayout.addWidget(self.txt_data_final)
 

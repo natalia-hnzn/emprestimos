@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dialog_ui.ui'
+## Form generated from reading UI file 'emprestimo_ui.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.2.4
 ##
@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QHBoxLayout,
     QLabel, QLineEdit, QPushButton, QSizePolicy,
     QVBoxLayout, QWidget)
+import icon_rc
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -38,10 +39,20 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addWidget(self.lbl_cpf_funcionario_emprestimo)
 
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.txt_cpf_funcionario_emprestimo = QLineEdit(self.widget)
         self.txt_cpf_funcionario_emprestimo.setObjectName(u"txt_cpf_funcionario_emprestimo")
 
-        self.verticalLayout.addWidget(self.txt_cpf_funcionario_emprestimo)
+        self.horizontalLayout_2.addWidget(self.txt_cpf_funcionario_emprestimo)
+
+        self.btn_consulta_funcionario = QPushButton(self.widget)
+        self.btn_consulta_funcionario.setObjectName(u"btn_consulta_funcionario")
+
+        self.horizontalLayout_2.addWidget(self.btn_consulta_funcionario)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.lbl_nome_funcionario_emprestimo = QLabel(self.widget)
         self.lbl_nome_funcionario_emprestimo.setObjectName(u"lbl_nome_funcionario_emprestimo")
@@ -58,10 +69,10 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addWidget(self.lbl_tipo_uniforme)
 
-        self.cb_tipo_uniforme = QComboBox(self.widget)
-        self.cb_tipo_uniforme.setObjectName(u"cb_tipo_uniforme")
+        self.cb_uniforme = QComboBox(self.widget)
+        self.cb_uniforme.setObjectName(u"cb_uniforme")
 
-        self.verticalLayout.addWidget(self.cb_tipo_uniforme)
+        self.verticalLayout.addWidget(self.cb_uniforme)
 
         self.btn_confirmar_emprestimo = QPushButton(self.widget)
         self.btn_confirmar_emprestimo.setObjectName(u"btn_confirmar_emprestimo")
@@ -80,6 +91,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.lbl_cpf_funcionario_emprestimo.setText(QCoreApplication.translate("Dialog", u"CPF do funcionario", None))
+        self.btn_consulta_funcionario.setText(QCoreApplication.translate("Dialog", u"Consultar", None))
         self.lbl_nome_funcionario_emprestimo.setText(QCoreApplication.translate("Dialog", u"Nome do funcionario", None))
         self.lbl_tipo_uniforme.setText(QCoreApplication.translate("Dialog", u"Tipo de uniforme", None))
         self.btn_confirmar_emprestimo.setText(QCoreApplication.translate("Dialog", u"Confirma", None))
