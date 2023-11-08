@@ -11,7 +11,7 @@ class EmprestimoRepository:
 
     @staticmethod
     def insert_emprestimo(funcionario, uniforme):
-        with DBConnectionHandler as db:
+        with DBConnectionHandler() as db:
             emp = Emprestimo()
             emp.uniforme_id = uniforme.id
             emp.funcionario_id = funcionario.id
@@ -25,7 +25,7 @@ class EmprestimoRepository:
 
     @staticmethod
     def finalize_emprestimo(funcionario, unifome):
-        with DBConnectionHandler as db:
+        with DBConnectionHandler() as db:
             today = datetime.now()
             try:
                 db.session.query(Emprestimo) \
@@ -38,7 +38,7 @@ class EmprestimoRepository:
 
     @staticmethod
     def select_emprestimos():
-        with DBConnectionHandler as db:
+        with DBConnectionHandler() as db:
             emprestimos = db.session.query(Emprestimo) \
                 .options(joinedload(Emprestimo.funcionario),
                          joinedload(Emprestimo.uniforme)).all()
@@ -46,13 +46,13 @@ class EmprestimoRepository:
 
     @staticmethod
     def delete_emprestimo(emprestimo):
-        with DBConnectionHandler as db:
+        with DBConnectionHandler() as db:
             db.session.delete(emprestimo)
             db.session.commit()
 
     @staticmethod
     def select_emprestimos_ativos():
-        with DBConnectionHandler as db:
+        with DBConnectionHandler() as db:
             emprestimos = (db.session.query(Emprestimo, Funcionario, Uniforme)
                            .join(Funcionario, Funcionario.id == Emprestimo.funcionario_id)
                            .join(Uniforme, Uniforme.id == Emprestimo.uniforme_id)
@@ -65,7 +65,7 @@ class EmprestimoRepository:
             begin_date_ = datetime.strptime(begin_date, '%d/%m/%Y')
             end_date_ = datetime.strptime(end_date, '%d/%m/%Y')
             end_date_ = end_date_.replace(hour=23, minute=59, second=59)
-            with DBConnectionHandler as db:
+            with DBConnectionHandler() as db:
                 emprestimos = (
                     db.session.query(Emprestimo, Funcionario, Uniforme)
                     .join(Funcionario, Funcionario.id == Emprestimo.funcionario_id)
