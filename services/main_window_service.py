@@ -31,13 +31,14 @@ class MainWindowService:
     def populate_table_uniforme(self, main_window):
         main_window.tb_uniforme.setRowCount(0)
         lista_uniforme = self.uniforme_repository.select_all_uniformes()
-        for uniforme in lista_uniforme[:]:
-            if not uniforme.ativo:
-                lista_uniforme.remove(uniforme)
-        main_window.tb_uniforme.setRowCount(len(lista_uniforme))
-        for linha, uniforme in enumerate(lista_uniforme):
-            if uniforme.ativo:
-                main_window.tb_uniforme.setItem(linha, 0, uniforme.nome)
+        if lista_uniforme:
+            for uniforme in lista_uniforme[:]:
+                if not uniforme.ativo:
+                    lista_uniforme.remove(uniforme)
+            main_window.tb_uniforme.setRowCount(len(lista_uniforme))
+            for linha, uniforme in enumerate(lista_uniforme):
+                if uniforme.ativo is True:
+                    main_window.tb_uniformes.setItem(linha, 0, QTableWidgetItem(uniforme.nome))
 
     def populate_emprestimos_ativos(self, main_window):
         main_window.tb_emprestimos_ativos.setRowCount(0)

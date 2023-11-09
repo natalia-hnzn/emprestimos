@@ -56,7 +56,7 @@ class EmprestimoRepository:
             emprestimos = (db.session.query(Emprestimo, Funcionario, Uniforme)
                            .join(Funcionario, Funcionario.id == Emprestimo.funcionario_id)
                            .join(Uniforme, Uniforme.id == Emprestimo.uniforme_id)
-                           .filter(Emprestimo.data_devolucao.is_(None)))
+                           .filter(Emprestimo.data_devolucao.is_(None)).all())
             return emprestimos
 
     @staticmethod

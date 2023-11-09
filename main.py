@@ -2,9 +2,14 @@ import sys
 
 from PySide6.QtGui import QPalette, QColor, Qt
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog
+
+from services.emprestimo_service import EmprestimoService
+from services.funcionario_service import FuncionarioService
+from services.uniforme_service import UniformeService
 from view.main_ui import Ui_MainWindow
 from view.emprestimo_ui import Ui_Dialog
 from infra.config.connection import DBConnectionHandler
+from services.main_window_service import MainWindowService
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -12,8 +17,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__()
         self.setupUi(self)
         self.btn_emprestar.clicked.connect(self.adicionar_emprestimo)
-
         data_base = DBConnectionHandler()
+        self.main_window_service = MainWindowService()
+        self.funcionario_service = FuncionarioService()
+        self.uniforme_service = UniformeService()
+        self.emprestimo_service = EmprestimoService()
+        self.main_window_service.populate_table_uniforme(self)
+        self.main_window_service.populate_table_funcionario(self)
+        self.main_window_service.populate_emprestimos_ativos(self)
 
     def adicionar_emprestimo(self):
         self.emprestimo_dialog = EmprestimoDialog()

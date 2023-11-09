@@ -1,6 +1,4 @@
 from __future__ import annotations
-from typing import List
-from sqlalchemy import Column, ForeignKey, Table, DateTime
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from infra.config.base import Base
 

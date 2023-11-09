@@ -15,6 +15,7 @@ class DBConnectionHandler:
 
     def __create_database_engine(self):
         engine = create_engine(self.__connection_string)
+        return engine
 
     def create_table(self):
         engine = create_engine(self.__connection_string, echo=True)

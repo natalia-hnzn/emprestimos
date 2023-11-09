@@ -7,27 +7,32 @@ class FuncionarioRepository:
     @staticmethod
     def select_funcionario_by_id(id_funcionario):
         with DBConnectionHandler() as db:
-            return db.session.query(Funcionario).filter(Funcionario.id == id_funcionario).first()
+            funcionario = db.session.query(Funcionario).filter(Funcionario.id == id_funcionario).first()
+            return funcionario
 
     @staticmethod
     def select_funcionario_by_uniforme_id(id_uniforme):
         with DBConnectionHandler() as db:
-            return db.session.query(Funcionario).filter(Funcionario.uniforme_id == id_uniforme).first()
+            funcionario = db.session.query(Funcionario).filter(Funcionario.uniforme_id == id_uniforme).first()
+            return funcionario
 
     @staticmethod
     def select_funcionario_by_cpf(cpf_funcionario):
         with DBConnectionHandler() as db:
-            return db.session.query(Funcionario).filter(Funcionario.cpf == cpf_funcionario).first()
+            funcionario = db.session.query(Funcionario).filter(Funcionario.cpf == cpf_funcionario).first()
+            return funcionario
 
     @staticmethod
     def select_all_funcionario():
         with DBConnectionHandler() as db:
-            return db.session.query(Funcionario).all()
+            funcionario = db.session.query(Funcionario).all()
+            return funcionario
 
     @staticmethod
     def select_first_funcionario():
         with DBConnectionHandler() as db:
-            return db.session.query(Funcionario).first()
+            funcionario = db.session.query(Funcionario).first()
+            return funcionario
 
     @staticmethod
     def insert_one_funcionario(funcionario):

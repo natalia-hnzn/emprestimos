@@ -53,10 +53,50 @@ class FuncionarioService:
 
     def update_funcionario(self, main_window):
         if main_window.btn_editar_funcionario.text() == 'Editar':
-            selected_rows = main_window.tb_funcionario.selectedModel().selectedRows()
+            selected_rows = main_window.tb_funcionarios.selectionModel().selectedRows()
             if not selected_rows:
-                QMessageBox.warning(main_window, 'Funcionários', f'Selecione um funcionário')
                 return
-            selected_row = selected_rows[0]
-            main_window.txt_nome_funcionario.setText(main_window.tb_funcionario.item(selected_row, 0).text())
-            main_window.txt_cpf_funcionario.setText(main_window.tb_funcionario.item(selected_row, 1).text())
+            selected_row = selected_rows[0].row()
+            main_window.txt_nome_funcionario.setText(main_window.tb_funcionarios.item(selected_row, 0).text())
+            main_window.txt_cpf_funcionatio.setText(main_window.tb_funcionarios.item(selected_row, 1).text())
+            main_window.txt_cpf_funcionario.setReadOnly(True)
+            main_window.btn_editar_funcionario.setText('Atualizar')
+        else:
+            cpf_funcionario = main_window.txt_cpf_funcionario.text()
+            funcionario_updated = self.funcionario_repository.select_funcionario_by_cpf(cpf_funcionario)
+            funcionario_updated.nome = main_window.txt_nome_funcionario.text()
+
+            try:
+                self.funcionario_repository.update_funcionario(funcionario_updated)
+                QMessageBox.information(main_window, "Cadastro de funcionário", "Funcionário atualizado com sucesso!")
+                main_window.btn_editar_funcionario.setText('Editar')
+                main_window.txt_nome_funcionario.clear()
+                main_window.txt_cpf_funcionario.clear()
+                self.service_main_window.populate_table_funcionario(main_window)
+            except Exception as e:
+                QMessageBox.warning(main_window, "Atenção", f'Problema ao atualizar funcionário.\n')
+
+
+
+    def delete_funcionario(self, main_window):
+        selected_rows = main_window.tb_funcionarios.selectionModel().selectedRows()
+        if not selected_rows:
+            return
+        selected_row = selected_rows[0].row()
+        funcionario_delete = self.funcionario_repository.select_funcionario_by_cpf(main_window.tb_funcionarios.item(selected_row, 1).text())
+        msg_box = QMessageBox(main_window)
+        msg_box.setWindowTitle('Remover funcionário')
+        msg_box.setText(f'Tem certeza de que deseja remover o funcionário {funcionario_delete.nome}?')
+        msg_box.setIcon(QMessageBox.Question)
+        yes_button = msg_box.addButton("Sim", QMessageBox.YesRole)
+        no_button = msg_box.addButton("Cancelar", QMessageBox.NoRole)
+        msg_box.exec()
+        if msg_box.clickedButton() == yes_button:
+            try:
+                self.funcionario_repository.delete_funcionario(funcionario_delete)
+                self.service_main_window.populate_table_funcionario(main_window)
+            except Exception as e:
+                QMessageBox.warning(main_window, "Atenção", f'Problema ao remover funcionário.\n'
+                                                            f'Erro: {e}')
+
+
